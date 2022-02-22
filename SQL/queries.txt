@@ -1,0 +1,60 @@
+q1) 
+SELECT ar.Name as artist_name , Count(*) AS artist_Popularity
+
+FROM Invoice as  I 
+JOIN InvoiceLine as L
+on I.InvoiceId = L.InvoiceId
+Join Track as T
+on L.TrackId = T.TrackId
+Join Album as A
+on A.AlbumId= T.AlbumId
+Join Artist as ar
+on ar.ArtistId = A.ArtistId
+
+Group by 1
+ORDER BY 2 deSC
+LIMIT 15 
+
+q2)
+SELECT C.FirstName as Customer_name , sum(I.Total) AS total_purchase
+
+FROM InvoiceLine as L
+Join Track as T
+on L.TrackId = T.TrackId
+join Invoice as I
+on I.InvoiceId = L.InvoiceId
+join Customer as C
+on C.CustomerId = I.CustomerId
+
+Group by C.CustomerId
+ORDER BY 2 deSC
+LIMIT 20
+
+q3) 
+SELECT G.name as genre_name , Count(*) AS Popularity
+FROM  Invoice as  I 
+JOIN InvoiceLine as L
+On I.InvoiceId = L.InvoiceId
+Join Track as T
+ON L.TrackId = T.TrackId
+Join Genre as G
+On T.GenreId= G.GenreId
+Group by 1
+ORDER BY 2 DESC
+LIMIT 15
+
+
+q4)
+SELECT A.Title as album_name , Count(*) AS album_Popularity
+
+FROM Invoice as  I 
+JOIN InvoiceLine as L
+On I.InvoiceId = L.InvoiceId
+Join Track as T
+ON L.TrackId = T.TrackId
+Join Album as A
+On A.AlbumId= T.AlbumId
+
+Group by T.AlbumId
+ORDER BY 2 deSC
+LIMIT 15 
